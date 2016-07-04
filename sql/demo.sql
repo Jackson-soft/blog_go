@@ -5,3 +5,5 @@ create table `user_info`
     `password` varchar(128) not null comment '密码',
     primary key(`id`)
 )engine=InnoDB default charset=utf8 comment='用户表';
+
+
