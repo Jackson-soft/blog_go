@@ -5,6 +5,3 @@ type SellerController struct {
 	BaseController
 }
 
-func (c *SellerController) DealNum() {
-
-}
