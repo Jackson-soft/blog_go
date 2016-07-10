@@ -1,4 +1,0 @@
-function UserLogin()
-{
-    alert("ddd");
-}
