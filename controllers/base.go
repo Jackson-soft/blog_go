@@ -8,13 +8,13 @@ import (
 	"github.com/astaxie/beego"
 )
 
-type MainController struct {
+type BaseController struct {
 	beego.Controller
 	envelope *models.MsgEnvelope
 }
 
 //访问接口前的一些判断
-func (c *MainController) Prepare() {
+func (c *BaseController) Prepare() {
 	c.envelope = &models.MsgEnvelope{
 		Result:  true,
 		NowTime: time.Now().Format(constant.FORMAT_DATETIME),
