@@ -7,5 +7,12 @@ type UserController struct {
 
 //订单号
 func (c *UserController) DealNum() {
-
+	envelope := c.envelope
+	defer c.ServeJSON()
+	sDealNum := c.GetPostValue("dealNum")
+	if sDealNum == "" {
+		envelope.ErrMsg = "交易号不能为空"
+		envelope.Result = false
+		return
+	}
 }

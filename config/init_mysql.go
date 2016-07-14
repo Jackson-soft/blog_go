@@ -1,23 +1,24 @@
 package config
 
 import (
-	"database/sql"
-	"github.com/astaxie/beego"
-	_ "github.com/go-sql-driver/mysql"
+	"blog_go/dao"
 	"log"
+	"os"
+
+	"github.com/astaxie/beego"
 )
 
 func init() {
-	constr := beego.AppConfig.String("sqlconstr")
+	log.Println("init db")
+	constr := beego.AppConfig.String("connstr")
+	//设置最大空闲连接
+	maxIdle := beego.AppConfig.DefaultInt("maxIdle", 10)
+	//设置最大数据库连接
+	maxConn := beego.AppConfig.DefaultInt("maxConn", 100)
 	log.Println("constr:", constr)
-	db, err := sql.Open("mysql", constr)
+	err := dao.InitDB(constr, maxIdle, maxConn)
 	if err != nil {
 		log.Println(err)
-	}
-	defer db.Close()
-
-	err = db.Ping()
-	if err != nil {
-		log.Println(err)
+		os.Exit(0)
 	}
 }
