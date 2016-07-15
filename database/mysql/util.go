@@ -11,7 +11,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
-	//"code.google.com/p/go-uuid/uuid"
+
+	"github.com/pborman/uuid"
 )
 
 const (
@@ -75,7 +76,6 @@ func GetTableNumber(id string, n uint32) uint32 {
 	return h % n
 }
 
-/*
 func GetUUID() string {
 	return strings.Replace(uuid.NewUUID().String(), "-", "", 0)
 }
@@ -83,7 +83,7 @@ func GetUUID() string {
 func GetUUIDShort() string {
 	return strings.Replace(uuid.NewUUID().String(), "-", "", -1)
 }
-*/
+
 type StrTo string
 
 func (f *StrTo) Set(v string) {
