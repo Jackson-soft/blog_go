@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"blog_go/base/util"
 	"blog_go/constant"
 	"blog_go/models"
 	"errors"
@@ -44,6 +45,7 @@ func (c *BaseController) GetPostInt64(key string, def int64) (int64, error) {
 //访问接口前的一些判断
 func (c *BaseController) Prepare() {
 	c.envelope = &models.MsgEnvelope{
+		Data:    util.EmptyMap(),
 		Result:  true,
 		NowTime: time.Now().Format(constant.FORMAT_DATETIME),
 	}

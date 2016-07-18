@@ -1,8 +1,8 @@
 package mysql
 
 import (
-	"base_go/log"
 	"database/sql"
+	"log"
 	"reflect"
 	"strings"
 	"time"
@@ -17,16 +17,16 @@ func (this *Tx) Close() {
 	if this.hasError {
 		err := this.Tx.Rollback()
 		if err != nil {
-			log.Error(err)
+			log.Println(err)
 		}
 	} else {
 		err := this.Tx.Commit()
 		if err != nil {
-			log.Error(err)
+			log.Println(err)
 
 			err := this.Tx.Rollback()
 			if err != nil {
-				log.Error(err)
+				log.Println(err)
 			}
 		}
 	}
@@ -45,7 +45,7 @@ func (tx *Tx) Insert(query string, args ...interface{}) (int64, error) {
 
 	res, err := stmt.Exec(args...)
 	if err != nil {
-		log.Error(err)
+		log.Println(err)
 		return -1, err
 	}
 	return res.LastInsertId()
@@ -166,7 +166,7 @@ func (tx *Tx) QueryForModel(model interface{}, query string, args ...interface{}
 	if err != nil {
 		return false, err
 	}
-	defer  stmt.Close()
+	defer stmt.Close()
 
 	rows, err := stmt.Query(args...)
 	if err != nil {
