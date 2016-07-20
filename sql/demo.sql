@@ -15,8 +15,6 @@ create table `user_info`
 )engine=InnoDB default charset=utf8mb4 comment='用户表';
 
 
-
-
 drop table if exists `seller_info`;
 create table `seller_info`
 (
@@ -25,12 +23,27 @@ create table `seller_info`
     `mobile` varchar(11) not null comment '手机号',
     `password` varchar(128) not null comment '密码',
     `balance` bigint(20) not null comment '商家的余额',
-    `freeze` bigint(20) not null comment '商家的冻结余额',
     `gmt_create` timestamp not null default current_timestamp comment '写入时间',
     primary key(`id`),
     index `i_mobile` (`mobile`),
     unique `u_mobile` (`mobile`)
 )engine=InnoDB default charset=utf8mb4 comment='商家信息表';
+
+
+-- 后台人员表
+drop table if exists `manager_info`;
+create table `manager_info`
+(
+    `id` bigint(20) unsigned not null auto_increment comment '主键',
+    `nick_name` varchar(32) not null default '' comment '后台人员昵称',
+    `mobile` varchar(11) not null comment '手机号',
+    `password` varchar(128) not null comment '密码',
+    `gmt_create` timestamp not null default current_timestamp comment '写入时间',
+    primary key(`id`),
+    index `i_mobile` (`mobile`),
+    unique `u_mobile` (`mobile`)
+)engine=InnoDB default charset=utf8mb4 comment='后台人员表';
+
 
 
 

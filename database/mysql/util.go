@@ -25,14 +25,6 @@ const (
 	format_DateTime = "2006-01-02 15:04:05"
 )
 
-func EmptyArray() []map[string]interface{} {
-	return make([]map[string]interface{}, 0)
-}
-
-func EmptyMap() map[string]interface{} {
-	return make(map[string]interface{})
-}
-
 var DefaultTimeLoc = time.Local
 
 func ReadMessage(conn *net.TCPConn) (uint16, []byte, error) {

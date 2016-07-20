@@ -5,7 +5,7 @@ import (
 )
 
 func QueryUserByMobile(mobile string) (map[string]interface{}, error) {
-	sql := "SELECT id,password FROM user_info WHERE mobile=?"
+	sql := "SELECT id,nick_name as nickName,password FROM user_info WHERE mobile=?"
 	return dao.Database.QueryForMap(sql, mobile)
 }
 
