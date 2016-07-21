@@ -1,7 +1,7 @@
 package dao
 
 import (
-	"blog_go/database/mysql"
+	"blog_go/base/database/mysql"
 	"log"
 )
 
