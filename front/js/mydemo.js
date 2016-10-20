@@ -11,3 +11,14 @@ function UserLogin() {
         alert(data);
     })
 }
+$(function(){
+    var ws = new WebSocket("ws://localhost:8088/echo");
+    ws.onmessage = function(e) {
+        $('<li>').text(event.data).appendTo($ul);
+    };
+    var $ul = $('#msgList');
+    $('#sendBtn').click(function(){
+        var data = $('#name').val();
+        ws.send(data);
+    });
+});
